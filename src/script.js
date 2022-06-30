@@ -9,6 +9,9 @@ import gsap from 'gsap';
  * Base
  */
 // Debug
+let params = {
+    progress: 0
+};
 const gui = new dat.GUI();
 
 // Canvas
