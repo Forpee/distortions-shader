@@ -13,5 +13,11 @@ void main()
     
     displacedUv.y=mix(vUv.y,displace.r-.2,uProgress);
     
-    gl_FragColor=vec4(vUv,1.,1.);
+    vec4 color=texture2D(image,displacedUv);
+    
+    color.r=texture2D(image,displacedUv+vec2(0.,10.*.005)*uProgress).r;
+    color.g=texture2D(image,displacedUv+vec2(0.,10.*.01)*uProgress).g;
+    color.b=texture2D(image,displacedUv+vec2(0.,10.*.02)*uProgress).b;
+    
+    gl_FragColor=color;
 }
