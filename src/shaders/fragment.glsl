@@ -1,4 +1,5 @@
 uniform float uTime;
+uniform float uProgress;
 uniform sampler2D image;
 uniform sampler2D displacement;
 

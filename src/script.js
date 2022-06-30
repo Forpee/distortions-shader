@@ -13,7 +13,9 @@ let params = {
     progress: 0
 };
 const gui = new dat.GUI();
-
+gui.add(params, 'progress', 0, 1).onChange(() => {
+    material.uniforms.uProgress.value = params.progress;
+});
 // Canvas
 const canvas = document.querySelector('canvas.webgl');
 
@@ -30,6 +32,7 @@ const geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
 const material = new THREE.ShaderMaterial({
     uniforms: {
         uTime: { value: 0 },
+        uProgress: { value: 0 },
         image: { value: new THREE.TextureLoader().load('/img.jpg') },
         displacement: { value: new THREE.TextureLoader().load('/distortions.jpg') }
     },
