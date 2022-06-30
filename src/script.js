@@ -34,7 +34,7 @@ const material = new THREE.ShaderMaterial({
         uTime: { value: 0 },
         uProgress: { value: 0 },
         image: { value: new THREE.TextureLoader().load('/img.jpg') },
-        displacement: { value: new THREE.TextureLoader().load('/distortions.jpg') }
+        displacement: { value: new THREE.TextureLoader().load('/distortions.png') }
     },
     vertexShader: vertexShader,
     fragmentShader: fragmentShader,
