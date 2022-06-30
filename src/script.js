@@ -33,6 +33,7 @@ const material = new THREE.ShaderMaterial({
     uniforms: {
         uTime: { value: 0 },
         uProgress: { value: 0 },
+        mouse: { value: new THREE.Vector2(0, 0) },
         image: { value: new THREE.TextureLoader().load('/img.jpg') },
         displacement: { value: new THREE.TextureLoader().load('/distortions.png') }
     },
@@ -66,6 +67,29 @@ window.addEventListener('resize', () => {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+
+function onPointerMove(event) {
+
+    // calculate pointer position in normalized device coordinates
+    // (-1 to +1) for both components
+
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(pointer, camera);
+
+    // calculate objects intersecting the picking ray
+    const intersects = raycaster.intersectObjects(scene.children);
+
+    if (intersects.length > 0) {
+        // console.log(intersects[0].point);
+        material.uniforms.mouse.value = intersects[0].point;
+    }
+
+}
 
 /**
  * Camera
