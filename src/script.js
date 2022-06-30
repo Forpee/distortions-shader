@@ -13,7 +13,7 @@ let params = {
     progress: 0
 };
 const gui = new dat.GUI();
-gui.add(params, 'progress', 0, 1).onChange(() => {
+gui.add(params, 'progress', 0, 1).step(0.01).onChange(() => {
     material.uniforms.uProgress.value = params.progress;
 });
 // Canvas
