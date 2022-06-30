@@ -27,6 +27,18 @@ void main()
     
     float dist=length(vPosition-vec3(mouse,0.));
     
+    float prox=1.-map(dist,0.,.2,0.,1.);
+    
+    prox=clamp(prox,0.,1.);
+    
+    // vec2 zoomUv=vUv+direction*prox*prox*progress;
+    
+    vec2 zoomUv1=mix(vUv,mouse.xy+vec2(.5),prox*uProgress);
+    
+    vec4 textColor=texture2D(image,zoomUv1);
+    
     gl_FragColor=color;
     gl_FragColor=vec4(dist,dist,dist,1.);
+    gl_FragColor=textColor;
+    
 }
