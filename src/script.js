@@ -70,6 +70,7 @@ window.addEventListener('resize', () => {
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
+window.addEventListener('pointermove', onPointerMove);
 
 function onPointerMove(event) {
 
