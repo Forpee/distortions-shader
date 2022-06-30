@@ -10,7 +10,7 @@ void main()
     
     vec2 displacedUv=vec2(vUv.x,vUv.y);
     
-    displacedUv.y=mix(vUv.y);
+    displacedUv.y=mix(vUv.y,displace.r-.2,);
     
     gl_FragColor=vec4(vUv,1.,1.);
 }
