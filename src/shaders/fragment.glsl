@@ -24,7 +24,7 @@ void main()
     color.r=texture2D(image,displacedUv+vec2(0.,10.*.005)*uProgress).r;
     color.g=texture2D(image,displacedUv+vec2(0.,10.*.01)*uProgress).g;
     color.b=texture2D(image,displacedUv+vec2(0.,10.*.02)*uProgress).b;
-    
+    // ///////////////////////////////////////////////////////
     float dist=length(vPosition-vec3(mouse,0.));
     
     float prox=1.-map(dist,0.,.2,0.,1.);
